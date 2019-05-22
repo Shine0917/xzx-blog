@@ -20,10 +20,11 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io  USERNAME=你的用户名
 # git push -f git@github.com:susan007/susan007.github.io.git master
+
 git push -f git@github.com:XiaoZhaoxiaaa/XiaoZhaoxiaaa.github.io.git master
 # 如果发布到 https://<USERNAME>.github.io/<REPO>  REPO=github上的项目
 # git push -f git@github.com:susan007/my-blog.git master:gh-pages
-# git push -f https://github.com/susan007/my-blog.git master:gh-pages
+# git push -f git@github.com:XiaoZhaoxiaaa/xzx-blog.git master:gh-pages
 
 cd -
 # 把本工程代码推到码云上，是本工程，不是打包好的那些
