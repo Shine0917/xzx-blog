@@ -1,6 +1,8 @@
 ---
 home: true
-# heroImage: /hero.png
+heroImage: /timg.jpeg
+heroText: xzx-blog
+tagline: 学而不思则罔，思而不学则殆
 actionText: Get Started →
 actionLink: /web-front/
 features:

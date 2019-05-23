@@ -1,9 +1,9 @@
 {
-  "name":"无名美少女",
-  "short_name":"博客",
+  "name":"Zoey",
+  "short_name":"xzx",
   "icons": [
     {
-      "src":"/icon/icon_logo.png",
+      "src":"/timg.png",
       "sizes":"200*200",
       "type":"image/png"
     }
@@ -11,5 +11,14 @@
   "start_url":"/index.html",
   "display":"standalone",
   "background_color":"#fff",
-  "theme_color":"#3eaf7c"
+  "theme_color":"#3eaf7c",
+  "related_applications":[
+    {
+      "platform":"web"
+    },
+    {
+      "platform":"play",
+      "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
+    }
+  ]
 }
