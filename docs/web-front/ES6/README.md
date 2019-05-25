@@ -11,7 +11,6 @@ BFC
 
 
 
-
 Es6的新特性：
 
 类
@@ -36,14 +35,12 @@ Let与const
 
 
 
-参考：
+[参考来自](https://juejin.im/post/5b9cb3336fb9a05d290ee47e)
 
-https://juejin.im/post/5b9cb3336fb9a05d290ee47e
-
-1.类（class）
+### 1.类（class）
 
 Es6引入class，让js的面向对象编程编的更加简单何易于理解
-
+```js
     class Animal {
       //构造函数，实例化的时候将会被调用，如果不指定，那么会有一个不带参的默认构造函数
       constructor(name,color) {
@@ -81,52 +78,51 @@ Es6引入class，让js的面向对象编程编的更加简单何易于理解
     //实例cat是Cat和Animal的实例，和ES5完全一致。
     console.log(cat instanceof Cat); //true
     console.log(cat instanceOf Animal); //true
-    
+```    
     
 
-2.模块化（Module）
+### 2.模块化（Module）
 
 ES5不支持原生的模块化，在ES6中模块作为重要的组成部分被添加进来。模块的功能主要由export和import组成，每一个模块都有自己单独的作用域，模块之间的相互调用关系是通过export来规定模块对外暴露的接口，通过import来引用。同时还为模块创造了命名空间，防止函数的命名冲突。
 
-导出（export）
+#### 导出（export）
 
 ES6允许在一个模块中使用export来导出多个变量或函数
 
 导出变量
-
+```js
     // test.js
     export var name ='hello'
-
+```
 不仅只是变量的导出，同时也支持常量的导出，如下
-
+```js
     export const sqrt = Math.sqrt;  //导出常量
-
+```
 Es6将一个文件视为一个模块，上面的模块通过export向外输出了一个变量。一个模块也可以同时向外输出多个变量。
-
+```js
     // test.js
     var name = 'hello';
     var age = '18';
     export {name , age};
-
+```
 导出函数
-
+```js
     //demo.js
     export function demo(someArg) {
       return someArg;
     }
-
-导入（import）
-
+```
 定义好模块的输出以后就可以在另外一个模块通过import引用
-
+```js
     import {demo} from 'demo' // demo.js
     import {name,age} from 'test'; //test.js
-
+```
 一条import语句可以同时导入默认函数和其他变量。 
-
+```js
     import defaultMethod, {otherMethod} from 'XXX.js';
+```
 
-箭头（Arrow）函数
+### 3.箭头（Arrow）函数
 
 箭头函数包围了它的代码共享同一个this，能解决this指向问题。
 
@@ -135,7 +131,7 @@ Es6将一个文件视为一个模块，上面的模块通过export向外输出�
 箭头函数的结构
 
 箭头函数的箭头 =>之前是一个空括号、单个的参数名、或用括号括起的多个参数名，而箭头函数之后可以是一个表达式（作为函数的返回值），或者是用花括号括起的函数体（需要自行通过return 来返回值，否则返回undefined).
-
+```js
     //箭头函数的例子
     （）=> 1
     v => v+1
@@ -149,35 +145,35 @@ Es6将一个文件视为一个模块，上面的模块通过export向外输出�
       }
       return 1000/e;
     }
-
+```
 不论是箭头函数还是bind，每次被执行都返回的是一个新的函数引用，因此如果能还需要函数引用去做别的事情（如：去卸载监听器），那需要自己保存这个引用。
 
 卸载监听器时的陷阱   这里有待完善啰！！！
-
+```js
     class Menu ectends React.Component {
       componentWillMount() {
     
       }
     }
+```
 
 
-
-函数参数默认值
+### 4.函数参数默认值
 
 ES6支持在定义函数的时候为其设置默认值：
-
+```js
     function foo(height = 500,color = 'red') {
       //some code
     }
-
+```
 不使用默认值：
-
+```js
     function foo (height, color){
       var height = height ||500;
       var color = color || 'red';
       //some code
     }
-
+```
 这样写一般没问题，但当参数的布尔值为false时，就会出现问题，比如，我们调用fooha函数：
 
 foo(0,'')
@@ -186,24 +182,24 @@ foo(0,'')
 
 所以说，函数参数默认值不仅使代码更简洁而且能规避一些问题。
 
-模板字符串
+### 5.模板字符串
 
 ES6支持模板字符串，使得字符串拼接更加简洁，直观。
-
+```js
 不使用模板字符串时：var name = 'my name is '+first +''+last+'.'
 
 使用模版字符串：var name =your name is ${first} ${last}``
 
     var name = `your name is ${first} ${last}.`
+```
 
 
+### 6.解构赋值
 
-解构赋值
-
-数组解构
+#### 数组解构
 
 从数组中获取值并赋值到变量中，变量的顺序与数组中对象的顺序对应；
-
+```js
     var foo = ['one','two','three', 'four'];
     var [a,b,c,d] = foo;
     console.log(a); //"one"
@@ -215,20 +211,19 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     var [first,,,last] = foo;
     console.log(first) //"one"
     console.log(last); //"four"
+```    
     
-    
-
 如果没有从数组中获取到值，你可以为变量设置一个默认值
-
+```js
     var a,b;
     [a=5,b=7] =[1];
     console.log(a); //1
     console.log(b) // 7
-
-对象解构
+```
+#### 对象解构
 
 上回面试这个都没写出来，还说自己用过，感觉好丢人呐，回来赶紧看一下
-
+```js
     const student = {
       name :'xiaoming';
       age:'18';
@@ -244,32 +239,32 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     let {name: userName} = user;
     console.log(userName); //小明
     console.log(name); //undefined  因为name是匹配的模式，userName才是变量，，真正被赋值的是userName
-
+```
 属性名与被赋值的变量名是不是一致
 
 1.属性名和变量名不一致
 
 当不一致时，需要显式指定属性名，这样才能把属性值赋值到变量中
-
+```js
     let user = {name:'小明',age:12};
     let {name: userName,age:userAge} = user;
     console.log(userName); //‘小明’
     console.log(userAge); //12
-
+```
 其他注意事项：
 
 1.属性不存在，但是依然赋给变量
 
 当要给变量赋值的属性不存在，会给变量提供一个默认值undefined
-
+```js
     let user = {name:'小红', age:12};
     let {address:userAddress} = user;
     console.log(userAddress); //undefined
-
+```
 2.变量赋予默认值
 
 当要给变量赋值的属性不存在时，变量时能够被赋予默认值
-
+```js
     //属性不存在
     let user = {name:'小红',age:18};
     let {address: userAddress='上海'} = user;
@@ -279,22 +274,23 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     let user = {name:'小花',age:13};
     let {name: userName = '小铭'} = user;
     console.log(userName); // '小花'   因为属性存在，变量无法获得默认值
-
+```
 3.同一个属性赋给多个变量
 
 对象中一个属性值是可以同时赋予给多个变量，
-
+```js
     let user = {name:'小明',age:12};
     let {name:userName,name: userName1} = user;
     console.log(userName); //'小明'
     console.log(userName1); //'小明'
+```
 
-扩展操作符（spread operator）
+### 7.扩展操作符（spread operator）
 
 扩展运算符… 可以在函数调用/数组构造时，将数组表达式或string在语法层面展开；还可以在构造对象时，将对象表达式按key-value的方式展开；
 
-函数调用
-
+#### 函数调用
+```js
     myFunction(...iterableObj);
     
     //运用场景
@@ -308,43 +304,43 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     
     //使用扩展运算符
     console.log(sum(...numbers)); //6
+```
 
-数组构造或字符串
-
+#### 数组构造或字符串
+```js
     [...iterableObj,'4',...'hello',6];
-    
+```  
 
 没有展开语法的时候，只能组合使用push，splice，concat等方法，来将已有数组元素变成新数组的一部分，有了展开语法，构造新数组变得更简单优雅：
-
+```js
     const students = ['jane','Tom'];
     const persons = ['Tony',...students,'Alice','Anne'];
     console.log(persons); //['Tony','jane','Tom','Alice','Anne']
-
+```
 和参数列表展开类似，…在构造数组时，可以在任意位置多次使用
 
 数组拷贝
-
+```js
     var arr = [1,2,3];
     var arr2 = [...arr]; //等同于arr.slice()
     arr2.push(4);
     console.log(arr2) //[1,2,3,4]
+```
 
 连接多个数组
-
-
-
+```js
     var arr1 = [1,2,3];
     var arr2 = [4,5,6];
     var arr3 = [...arr1,...arr2]; //将arr2中所有元素附加到arr1后面并返回
     //等同于
     var arr4 = arr1.concat(arr2);
-
+```
 构造对象时，进行clone或者属性拷贝（ECMAScript2018新增特性）
-
+```
     let objClone = {...obj};
-
+```
 在ECMAScript 2018中延展操作符增加了对对象的支持
-
+```js
     var obj1 = {foo:'bar',x:42};
     var obj2 = {foo: 'baz',y:23};
     var cloneObj = {...obj1};
@@ -352,25 +348,25 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     
     var mergedObj = {...obj1,...obj2};
     mergedObj  // {foo:'baz',x:42,y:23}      为什么foo只有一个值呢
-
-在react中的应用
+```
+#### 在react中的应用
 
 通常我们在封装一个组件时，会对外公开一些props用于实现功能，大部分情况下在外部使用都应显示的传递props，但是当传递大量的props时，会非常繁琐，这是可以用…扩展运算符，用于取出参数对象的所有可遍历属性来进行传递。
 
 一般情况下写法
-
+```
     <CustomComponent name="jane" age={12}/>
-
+```
 如果使用... , 则等同于
-
+```
     const params = {
       name: 'jane',
       age: 12
     }
     <CustomComponent {...params}/>
-
+```
 配合解构赋值避免传入一些不必要的参数
-
+```
     var params = {
     	name: 'ann',
     	title:'head',
@@ -381,13 +377,13 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
     
     //等同于
     <CustomComponent type='normal' number= {2} name='ann' title='head' />
-
+```
 
 
 对象属性简写
 
 在ES6中允许我们在设置一个对象的属性时不知道属性名
-
+```js
     //常规写法； 对象中必须包含属性和值，显得非常冗余
     const name = 'ming', age='18',city="shanghai";
     const student = {
@@ -406,13 +402,12 @@ ES6支持模板字符串，使得字符串拼接更加简洁，直观。
       city
     };
     console.log(student); //{name:"ming",age:"18", city:"shanghai"}
+ ```   
     
-    
-
-Promise
+### 8.Promise
 
 Promise是异步编程中的一种解决方案，比传统的解决方案callback更加优雅，
-
+```js
     //不使用ES6
     //嵌套两个setTimeout回调函数
     setTimeout(fucntion() {
@@ -438,23 +433,20 @@ Promise是异步编程中的一种解决方案，比传统的解决方案callbac
     });
     
     //上面的代码用两个then来进行异步编程串行化，避免了回调地狱
+```   
     
-    
-
-
 
 面试官让手写一个Promise
 
 
 
 
-
-支持let与const
+### 9.支持let与const
 
 在之前js是没有块级作用域的，const与let都是块级作用域
 
 使用var定义的变量为函数级作用域；使用let与const定义的变量为块级作用域：
-
+```js
     {
       let a =10;
     }
@@ -465,296 +457,11 @@ Promise是异步编程中的一种解决方案，比传统的解决方案callbac
       var a =10;
     }
     console.log(a); //输出10
-    
+```    
 
 
 
-ES7的特性
 
-includes
-
-指数操作符
-
-1.Array.prototype.includes()
-
-includes()函数用来判断一个数组是否包含有一个指定的值，如果包含则返回true，否则返回false
-
-includes与indexOf很相似，
-
-    arr.includes(x);
-    //等价于
-    arr.indexOf(x)>=0
-    
-    再上个例子🌰
-    let arr = ['react','angular','vue'];
-    if(arr.indexOf('react') !== -1) {
-      console.log('react存在')
-    }
-    
-    //等价于
-    if(arr.includes('react')) {
-      console.log('react存在')
-    }
-
-2.指数运算符
-
-在ES7中引入了指数运算符,   具有与Math.pow(..)等效的计算结果
-
-    //使用自定义的递归函数calculateExponent或者Math.pow()进行指数运算：
-    function calculateExponent(base,exponent) {
-      if(exponent === 1) {
-        return base;
-      }base {
-        return base*calculateExponent(base,exponent -1);
-      }
-    }
-    
-    console.log(calculateExponent(2,10)) // 输出1024
-    console.log(Math.pow(2,10)); //输出1024
-    
-    //使用指数运算符**，就像+，-等操作符一样：
-    console.log(2**10) //输出1024
-    
-
-
-
-ES8的特性
-
-1.async/await 
-
-在ES8中加入了async/await 的支持，更好的解决了回调地狱的问题，使得代码看起来更简洁。
-
-    login(userName) {
-      return new Promise ((reslove, reject) => {
-        setTimeout(() => {
-          resolve('1001');
-        },600);
-      });
-    }
-    
-    getData(userId) {
-      return new Promise((resolve,reject) => {
-        setTimeout(() => {
-          if(userId === '1001') {
-            resolve('Success');
-          }else {
-            reject('Fail');
-          }
-        },600);
-      
-      });
-    }
-    
-    
-    //不使用async/await ES7
-    doLogin(userName) {
-      this.login(userName)
-      .then(this.getData)
-        .then(result => {
-        	console.log(result)
-      })
-    }
-    
-    
-    //使用async/await ES8
-    async doLogin2(userName) {
-      const userId =await this.login(userName); 
-      const result = await this.getData(userId);
-    }
-    this.doLogin(); //Success
-    this.doLogin2(); // Success
-
-
-
-async/await的几种运用场景
-
-1.获取异步函数的返回值
-
-异步函数本身会返回一个Promise，所以我们可以通过then来获取异步函数的返回值
-
-    async function charCountAdd(data1,data2) {
-      const d1 = await charCount(data1);
-      const d2 = await charCount(data2);
-      return d1+d2;
-    }
-    charCountAdd('hello','hi').then(console.log); //通过then获取异步函数的返回值。
-    
-    function charCount(data) {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(data.length);
-        },1000);
-      });
-    }
-
-上述例子，通过两次await调用，每次都是等待1秒，一共是2秒，效率比较低，而且两次await的调用并没有依赖关系，，，然后可以用Promise.all来实现await的并发调用。
-
-    async function charCountAdd(data1,data2) {
-      const [d1,d2] = await Promise.all([charCount(data1),charCount(data2)]);
-      return d1+d2;
-    }
-    charCountAdd('hello','hi').then(console.log);
-    function charCount(data) {
-      return new Promise((resolve,reject) => {
-        setTimeout(() => {
-          resolve(data.length);
-        },1000);
-      });
-    }
-
-
-
-上述例子通过两次charCount的并发调用，Promise.all接受的是一个数组，它可以将数组中的promise对象并发执行；
-
-async/await的几种错误处理方式
-
-1.捕捉整个async/await函数的错误
-
-    async function charCountAdd(data1,data2) {
-      const d1 = await charCount(data1);
-      const d2 = await charCount(data2);
-      return d1+d2;
-    }
-    charCountAdd('hello','hi')
-     .then(console.log)
-     .catch(console.log); //捕捉整个async/await函数的错误
-    
-
-这种方式可以捕捉整个charCountAdd运行过程中出现的错误，错误有可能是charCountAdd本身产生的，也可能是对data1计算或data2计算中产生的。
-
-2.捕捉单个await表达式的错误
-
-    async function charCountAdd(data1,data2) {
-      const d1 = await charCount(data1)
-      	.catch(e=> console.log('d1 is null'));
-      const d2 = await charCount(data2)
-      	.catch(e =>console.log('d2 is null'));
-      return d1+d2;	
-    }
-    
-    charCountAdd('hello','hi').then(console.log);
-
-通过这样的方式捕捉每一个await表达式的错误，如果既要捕捉每一个await的错误，也要捕捉整个charCountAdd函数的错误，可以在调用charCountAdd的时候加个catch。
-
-    ...
-    charCountAdd('hello','hi')
-    	.then(console.log)
-    	.catch(console.log); //捕捉整个async/await函数的错误
-
-3.同时捕捉多个await表达式的错误
-
- 
-
-    async function charCountAdd(data1,data2) {
-      let d1,d2;
-      try {
-        d1 = await charCount(data1);
-        d2 = await charCount(data2);
-      }catch (e) {
-        console.log('d1 is null');
-      }
-      return d1+d2;
-    }
-    charCountAdd('hello','hi')
-    	.then(console.log);
-    
-    function charCount(data) {
-      return new Promise((resolve,reject) => {
-        setTimeout(() => {
-          resolve(data.length);
-        },1000);
-      });
-    }
-
-
-
-2.Object.values()
-
-Object.values()是一个与Object.keys()类似的新函数，但返回的是Object自身属性的所有值，不包含继承的值。
-
-假设我们要遍历如下对象obj的所有值：
-
-    const obj = {a:1,b:2,c:3};
-    
-    //不使用Object.values()   ES7
-    const vals = Object.keys(obj).map(key => obj[key]);
-    console.log(vals); //[1,2,3]
-    
-    //使用Object.values()
-    const values = Object.values(obj1);
-    console.log(values); //[1,2,3]
-    // 用这个省去了遍历key，并根据这些key获取value的步骤
-
-3.Object.entries()
-
-Object.entries()函数返回一个给定对象自身可枚举属性的键值对的数组。
-
-接下来遍历obj对象中的所有属性key和value：
-
-    Object.keys(obj).forEach(key => {
-      console.log('key:'+key +'value'+obj[key]);
-    })
-    //key:a value: 1
-    //key:b value:2
-    //key:c value:3
-    
-    //使用Object.entries()
-    for(let [key,value] of Object.entries(obj1)) {
-      console.log(`key:${key} value:${value}`)
-    }
-    //key:a value:1
-    //key:b value:2
-    //key:c value:3
-    
-
-
-
-4.String padding
-
-ES8中新增的两个实例函数String.prototype.padStart 和String.prototype.padEnd,允许将空字符串或其他字符串添加到原始字符串的开头或结尾。
-
-    String.padStart(targetLength,[padString])
-    
-    //targetLength:当前字符串需要填充到的目标长度，如果这个数值小于当前字符串的长度，则返回当前字符串本身
-    //padString:(可选)填充字符串，如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧部分，其他部分会被截断，此参数的缺省值为“”
-    
-    console.log('0.0'.padStart(4,'10')) //10.0
-    console.log('0.0'.padStart(20))//            0.00
-    
-    String.padEnd(targetLength,[padString])
-    //targetLength:当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。
-    //padString:(可选) 填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断，此参数的缺省值为 " "；
-    
-    
-    console.log('0.0'.padEnd(4,'0')) //0.00    
-    console.log('0.0'.padEnd(10,'0'))//0.00000000
-    
-
-4.Object.getOwnProtpertyDescriptors()
-
-Object.getOwnPropertyDescriptors()函数用来获取一个对象的所有自身属性的描述符，如果没有任何自身属性，则返回空对象
-
-    const obj2 = {
-    	name: 'Jine',
-    	get age() { return '18' }
-    };
-    Object.getOwnPropertyDescriptors(obj2)
-    // {
-    //   age: {
-    //     configurable: true,
-    //     enumerable: true,
-    //     get: function age(){}, //the getter function
-    //     set: undefined
-    //   },
-    //   name: {
-    //     configurable: true,
-    //     enumerable: true,
-    //		value:"Jine",
-    //		writable:true
-    //   }
-    // }
-    
-    
 
 1. webpack的plugins和loaders的实现原理
 
