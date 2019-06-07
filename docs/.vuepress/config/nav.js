@@ -4,6 +4,7 @@ module.exports =[
     {text:'数据结构与算法',link:'/algorithm/'},
     // {text:'分享',link:'/fx/'},
     {text:'面试',link:'/interview/'},
-    {text:'github',link:'https://github.com/XiaoZhaoxiaaa'}
+    {text:'常用技巧',link:'/tips/'},
+    {text:'github',link:'https://github.com/XiaoZhaoxiaaa'},
 
 ]

@@ -24,6 +24,12 @@ module.exports = [
       ['ES8/','es8新特性'],
     ]
 
+  }, 
+  {
+    title:'React',
+    collapsable:false,
+    sidebarDepth:2,
+    children:['React/']
   }
 
 
