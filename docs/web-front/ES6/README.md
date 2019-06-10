@@ -58,37 +58,55 @@ ES6允许在一个模块中使用export来导出多个变量或函数
 
 导出变量
 ```js
-    // test.js
-    export var name ='hello'
+// test.js
+export var name ='hello'
 ```
 不仅只是变量的导出，同时也支持常量的导出，如下
 ```js
-    export const sqrt = Math.sqrt;  //导出常量
+export const sqrt = Math.sqrt;  //导出常量
 ```
 Es6将一个文件视为一个模块，上面的模块通过export向外输出了一个变量。一个模块也可以同时向外输出多个变量。
 ```js
-    // test.js
-    var name = 'hello';
-    var age = '18';
-    export {name , age};
+// test.js
+var name = 'hello';
+var age = '18';
+export {name , age};
 ```
 导出函数
 ```js
-    //demo.js
-    export function demo(someArg) {
-      return someArg;
-    }
+//demo.js
+export function demo(someArg) {
+  return someArg;
+}
 ```
 定义好模块的输出以后就可以在另外一个模块通过import引用
 ```js
-    import {demo} from 'demo' // demo.js
-    import {name,age} from 'test'; //test.js
+import {demo} from 'demo' // demo.js
+import {name,age} from 'test'; //test.js
 ```
 一条import语句可以同时导入默认函数和其他变量。 
 ```js
-    import defaultMethod, {otherMethod} from 'XXX.js';
+import defaultMethod, {otherMethod} from 'XXX.js';
 ```
-
+export 与export区别
+```js
+// test.js
+export default {
+  name:'zs',
+  age:20
+}
+```
+```js
+// test.js
+var info = {
+  name:'as',
+  age:20
+}
+export default info
+```
+```js
+// 再main.js中接收，test.jss
+```
 ### 3.箭头（Arrow）函数
 
 箭头函数包围了它的代码共享同一个`this`，能解决`this`指向问题。
